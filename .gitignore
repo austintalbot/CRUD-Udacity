@@ -105,3 +105,4 @@ venv.bak/
 
 .vagrant
 .vscode
+/docroot/newsdata.sql
