@@ -1,5 +1,3 @@
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-import cgi
 
 # import CRUD Operations from Lesson 1
 from database_setup import Base, Restaurant, MenuItem
