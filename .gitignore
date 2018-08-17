@@ -106,3 +106,7 @@ venv.bak/
 .vagrant
 .vscode
 /docroot/newsdata.sql
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/Crud-Udacity/v15/.suo
+docroot/restaurant.PNG
