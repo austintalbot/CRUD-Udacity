@@ -21,6 +21,7 @@ def restaurantsIndex():
     return render_template('index.html',restaurants=restaurants)
 
 
+
 # Show a restaurant menu
 @app.route('/restaurants/<int:restaurant_id>/menu')
 def restaurantMenu(restaurant_id):
@@ -63,6 +64,15 @@ def editMenuItem(restaurant_id, menu_id):
     else:
         return render_template(
             'editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem)
+
+
+@app.route('/restaurants/<int:restaurant_id>/edit')
+def editRestaurantItem(restaurant_id):
+    editRestaurantItem = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    if request.method =='POST':
+        if request.form['name']:
+            editRestaurantItem.name = request.form['name']
+    return render_template('editrestaurantitem.html', restaurant_id=restaurant_id, item=editRestaurantItem)
 
 # delete a menu item 
 @app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/delete',

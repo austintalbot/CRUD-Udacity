@@ -29,6 +29,7 @@
         <div class='resatraunts'>
             <span class="name">
                 <p>{{restarant.name}}</p>
+                <a href="{{url_for('editRestaurangItem', restaurant_id = restaurant.id) }}">Edit Restaurant Item</a>
             </span>
         </div>
         {% endfor %}
