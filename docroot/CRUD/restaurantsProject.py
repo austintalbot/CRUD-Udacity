@@ -5,30 +5,24 @@ from database_setup import Base, Restaurant, MenuItem
 
 app = Flask(__name__)
 
-engine = create_engine('sqlite:///restaurantmenu.db',
-                        connect_args={'check_same_thread': False})
+# create sqlite database
+engine = create_engine('sqlite:///restaurantmenu.db',connect_args={'check_same_thread': False})
 Base.metadata.bind = engine
 
+# bind DBSession to Sqlite Engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-
-@app.route('/restaurants/<int:restaurant_id>/menu/JSON')
-def restaurantMenuJSON(restaurant_id):
-    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    items = session.query(MenuItem).filter_by(
-        restaurant_id=restaurant_id).all()
-    return jsonify(MenuItems=[i.serialize for i in items])
-
-
-# ADD JSON ENDPOINT HERE
-@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
-def menuItemJSON(restaurant_id, menu_id):
-    menuItem = session.query(MenuItem).filter_by(id=menu_id).one()
-    return jsonify(MenuItem=menuItem.serialize)
-
-
+# main landing page that displays all of the  restaurants
 @app.route('/')
+@app.route('/restaurants/')
+def restaurantsIndex():
+    restaurants = session.query(Restaurant).all()
+    return render_template('index.html',restaurants=restaurants)
+
+
+
+# Show a restaurant menu
 @app.route('/restaurants/<int:restaurant_id>/menu')
 def restaurantMenu(restaurant_id):
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
@@ -36,7 +30,7 @@ def restaurantMenu(restaurant_id):
     return render_template(
         'menu.html', restaurant=restaurant, items=items, restaurant_id=restaurant_id)
 
-
+# Create a new menu item 
 @app.route('/restaurants/<int:restaurant_id>/new', methods=['GET', 'POST'])
 def newMenuItem(restaurant_id):
 
@@ -50,6 +44,7 @@ def newMenuItem(restaurant_id):
         return render_template('newmenuitem.html', restaurant_id=restaurant_id)
 
 
+# Edit a restaurant menu 
 @app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/edit',
            methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
@@ -67,11 +62,22 @@ def editMenuItem(restaurant_id, menu_id):
         session.commit()
         return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
     else:
-
         return render_template(
             'editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem)
 
 
+@app.route('/restaurants/<int:restaurant_id>/edit',   methods=['GET', 'POST'])
+def editRestaurantItem(restaurant_id):
+    editRestaurantItem = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    if request.method =='POST':
+        if request.form['name']:
+            editRestaurantItem.name = request.form['name']
+        session.add(editRestaurantItem)
+        session.commit()
+        return redirect(url_for('restaurantsIndex'))
+    return render_template('editrestaurantitem.html', restaurant_id=restaurant_id, item=editRestaurantItem)
+
+# delete a menu item
 @app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/delete',
            methods=['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
@@ -83,6 +89,20 @@ def deleteMenuItem(restaurant_id, menu_id):
     else:
         return render_template('deletemenuitem.html', item=itemToDelete)
 
+
+# API calls to return Json Data
+# Return all menu times in Json format
+@app.route('/restaurants/<int:restaurant_id>/menu/JSON')
+def restaurantMenuJSON(restaurant_id):
+    items = session.query(MenuItem).filter_by(restaurant_id=restaurant_id).all()
+    return jsonify(MenuItems=[i.serialize for i in items])
+
+
+# Return Json data of one menu item
+@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+def menuItemJSON(restaurant_id, menu_id):
+    menuItem = session.query(MenuItem).filter_by(id=menu_id).one()
+    return jsonify(MenuItem=menuItem.serialize)
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
