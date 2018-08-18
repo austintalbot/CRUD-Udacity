@@ -111,3 +111,5 @@ venv.bak/
 .vs/Crud-Udacity/v15/.suo
 docroot/restaurant.PNG
 /docroot/restaurant.PNG
+restaurantmenu.db
+.vs/VSWorkspaceState.json
