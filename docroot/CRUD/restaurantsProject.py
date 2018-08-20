@@ -121,6 +121,14 @@ def deleteMenuItem(restaurant_id, menu_id):
 
 
 # API calls to return Json Data
+
+# Return Json of all restaurants
+@app.route('/restaurants/JSON')
+def restaurantsJson():
+    restaurants = session.query(Restaurant).all()
+    return jsonify(Restaurants=[i.serialize for i in restaurants])
+
+
 # Return all menu times in Json format
 @app.route('/restaurants/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
