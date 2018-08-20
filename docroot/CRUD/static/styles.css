@@ -54,11 +54,11 @@ a {
 
 .name {
     width: 50%;
-    display: inline-block;
     float: left;
+    display: inline-block;
 }
 
-.description {}
+
 
 .price {
     text-align: right;
@@ -66,8 +66,7 @@ a {
     float: right;
 }
 
-.editdeletepane {}
-
 .flash {
     background: #cee5f5;
 }
+
