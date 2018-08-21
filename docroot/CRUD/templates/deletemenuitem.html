@@ -5,13 +5,14 @@
 </head>
 
 <body>
-    <h1> Are you sure you want to delete {{item.name}}? </h1>
+    <h1> Are you sure you want to delete <em> {{item.name}}?</em> </h1>
     <form action="{{url_for('deleteMenuItem',restaurant_id = item.restaurant_id, menu_id=item.id)}}" method='post'>
-        <input type='submit' , value='Delete'>
+        <input type='submit' , value='Delete' class="button alert">
+        <a href="{{url_for('restaurantMenu', restaurant_id = item.restaurant_id)}}" class="button"> Cancel </a>
     </form>
-    <a href="{{url_for('restaurantMenu', restaurant_id = item.restaurant_id)}}"> Cancel </a>
+    
 </body>
 <footer>
-        <a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a>
+    <h3><a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a></h3>
 </footer>
 </html>

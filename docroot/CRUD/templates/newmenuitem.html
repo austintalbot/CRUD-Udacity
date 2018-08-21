@@ -11,32 +11,30 @@
     <div class='pane'>
         <form action="{{ url_for('.newMenuItem', restaurant_id=restaurant_id )}}" method='post'>
 
-            <dl>
-                <dt>Name:</dt>
-                <dd>
+          
+                <label>Name:</label>
+
                     <input type='text' size='30' name='name' required>
-                </dd>
-                <dt>Description:</dt>
-                <dd>
+               
+                <label>Description:</label>
+
                     <textarea name='description' rows='5' cols='40' required></textarea>
-                </dd>
-                <dt>Price:</dt>
-                <dd>
+               
+                <label>Price:</label>
+
                     <input type='text' size='8' name='price' required>
-                </dd>
-                <dt>Course:</dt>
-                <dd>
+               
+                <label>Course:
+
                     <input type='radio' name='course' value='Appetizer' checked>Appetizer</dd>
-                <dd>
+
                     <input type='radio' name='course' value='Entree'>Entree</dd>
-                <dd>
+
                     <input type='radio' name='course' value='Dessert'>Dessert</dd>
-                <dd>
+
                     <input type='radio' name='course' value='Beverage'>Beverage</dd>
-            </dl>
-
-
-            <input type='submit' value='Create'>
+                </label>
+            <input type='submit' value='Create' class="button">
 
         </form>
     </div>
@@ -44,7 +42,7 @@
 </body>
 
 <footer>
-        <a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a>
+    <h3><a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a></h3>
 </footer>
 
 

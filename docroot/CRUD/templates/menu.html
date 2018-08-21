@@ -11,12 +11,11 @@
             <h1>{{ restaurant.name }}</h1>
         </div>
 
-        <a href="{{url_for('newMenuItem', restaurant_id = restaurant.id) }}">Create New Item</a>
+        <a href="{{url_for('newMenuItem', restaurant_id = restaurant.id) }}" class="button">Create New Item</a>
 
 
         <div class='flash'>
             {% with messages = get_flashed_messages() %} {% if messages %}
-
             <ul>
                 {% for message in messages %}
                 <li>
@@ -52,9 +51,8 @@
 
         <div class="editdeletepane">
 
-            <a href="{{url_for('editMenuItem',restaurant_id = restaurant.id, menu_id=i.id)}}">Edit</a>
-            <a href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id)}}">
-                Delete</a>
+            <a href="{{url_for('editMenuItem',restaurant_id = restaurant.id, menu_id=i.id)}}"class="button">Edit</a>
+            <a href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id)}}" class="button">Delete</a>
         </div>
 
 
@@ -72,7 +70,6 @@
 
 
 <footer>
-        <a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a>
+    <h3><a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a></h3>
 </footer>
-
 </html>

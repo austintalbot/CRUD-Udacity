@@ -9,20 +9,17 @@
     <h1> Edit Restaurant Item </h1>
 
     <form action="{{ url_for('editRestaurantItem',restaurant_id = restaurant_id)}}" method='post'>
-        <dl>
-            <dt>Name:</dt>
-            <dd>
-                <input type='text' size='30' name='name' placeholder='{{item.name}}'>
-            </dd>
-        </dl>
+        <label>
+            <input type='text' size='30' name='name' placeholder='{{item.name}}'>
+        </label>
 
-        <input type='submit' value='Edit'>
+        <input type='submit' value='Edit' class="button">
 
-        <a href="{{url_for('restaurantsIndex')}}"> Cancel </a>
+        <a href="{{url_for('restaurantsIndex')}}" class="button"> Cancel  </a>
     </form>
 </body>
 <footer>
-        <a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a>
+    <h3><a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a></h3>
 </footer>
 
 </html>
