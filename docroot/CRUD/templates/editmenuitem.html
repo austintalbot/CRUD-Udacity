@@ -47,17 +47,15 @@
                     {% endif %}
                 </label>
             </div>
-     
             <div class="text">
                 <input type='submit' value='Edit' class='button'>
                 <a href="{{url_for('restaurantMenu', restaurant_id = restaurant_id)}}" class="button"> Cancel </a>
             </div>
-            
         </form>
     </div>
 </body>
-<footer>
+<div class="footer">
     <h3><a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a></h3>
-</footer>
+</div>
 
 </html>

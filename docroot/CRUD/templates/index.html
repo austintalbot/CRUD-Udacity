@@ -29,9 +29,7 @@
             <span class="name">
                 <h3>{{restaurant.name}}</h3>
                 <a href="{{url_for('restaurantMenu', restaurant_id = restaurant.id)}}" class="button "> View Menu </a>
-                <br/>
                 <a href="{{url_for('editRestaurantItem', restaurant_id = restaurant.id) }}" class="button ">Edit Restaurant</a>
-                <br/>
                 <a href="{{url_for('deleteRestaurantItem', restaurant_id = restaurant.id)}}" class="button  warning" > Delete Restaurant </a>
             </span>
         </div>
@@ -43,9 +41,9 @@
 
     </div>
     </div>
-    <footer>
+    <div class="footer">
         <h3><a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a></h3>
-    </footer>
+    </div>
 </body>
 
 

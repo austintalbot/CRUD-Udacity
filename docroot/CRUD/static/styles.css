@@ -19,6 +19,10 @@ body {
     color: #0a0a0a;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: sans-serif;
+    background-color: #333333;
+    color: #cccccc;
+    padding-bottom: 25px;
 }
 
 a {
@@ -206,28 +210,11 @@ label {
     color: #fefefe;
 }
 
-[data-whatinput='mouse'] .button {
-    outline: 0;
-}
-
 .button:hover,
 .button:focus {
     background-color: #258dad;
     color: #fefefe;
 }
-
-
-
-.button.small {
-    font-size: 0.75rem;
-}
-
-
-
-
-
-
-
 
 .button.alert {
     background-color: #c60f13;
@@ -239,8 +226,6 @@ label {
     background-color: #9e0c0f;
     color: #fefefe;
 }
-
-
 
 .button.warning {
     background-color: #ffae00;
@@ -254,11 +239,6 @@ label {
 }
 
 
-body {
-    font-family: sans-serif;
-    background-color: #333333;
-    color: #cccccc
-}
 
 h1,
 h2,
@@ -308,29 +288,34 @@ a {
 
 
 .resatraunts{
+    width: 50%;
     float: left;
-    width: 50%;
-}
-.name{
-    width: 50%;
-    display: inline-block;
-    border:2px solid;
-    border-color:  #ffffff;
-    border-radius: 25px;
-    margin: 10px;
 }
 
-.description {}
+.nameandprice{
+    width: 50%;
+    float: left;
+}
+
 
 .price {
     text-align: right;
-    width: 50%;
     float: right;
+    padding: 1rem;
 }
 
-.editdeletepane {}
 
 .flash {
     background: #cee5F5;
 }
 
+.footer {
+    display: inline-block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    height: 50px;
+}
