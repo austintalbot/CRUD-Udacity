@@ -2,6 +2,7 @@
 
 <head>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 </head>
 
 <body>
@@ -9,41 +10,35 @@
     <h1> Edit Menu Item </h1>
     <div class="formBorder">
         <form action="{{ url_for('editMenuItem',restaurant_id = restaurant_id, menu_id=item.id)}}" method='post' class='form'>
-            <div class="text">
-                <label> Name:
-                    <input type='text' size='30' name='name' placeholder='{{item.name}}'>
-                </label>
+            <div class="form-floating-label">
+                <input type='text' size='30' name='name' required>
+                <label for="text">{{item.name}}</label>
             </div>
-
-            <div class="text">
-                <label>Description:
-                    <textarea name='description' rows='5' cols='80' placeholder='{{item.description}}'></textarea>
-                </label>
+            <div class="form-floating-label">
+                <textarea name='description' rows='5' cols='80'></textarea>
+                <label for="textarea">{{item.description}}</label>
             </div>
-
-            <div class="text">
-                <label>Price:
-                    <input type='text' size='8' name='price' placeholder='{{item.price}}'>
-                </label>
+            <div class="form-floating-label">
+                <input type='text' size='8' name='price'>
+                <label for="text">{{item.price}}</label>
             </div>
-
             <div class="text">
                 <label>Course: {% if item.course == 'Appetizer' %}
-                        <input type='radio' name='course' value='Appetizer' checked>Appetizer</dd>
+                    <input type='radio' name='course' value='Appetizer' checked>Appetizer</dd>
                     {%else%}
-                        <input type='radio' name='course' value='Appetizer'>Appetizer</dd>
+                    <input type='radio' name='course' value='Appetizer'>Appetizer</dd>
                     {% endif %} {% if item.course == 'Entree' %}
-                        <input type='radio' name='course' value='Entree' checked>Entree</dd>
+                    <input type='radio' name='course' value='Entree' checked>Entree</dd>
                     {%else%}
-                        <input type='radio' name='course' value='Entree'>Entree</dd>
+                    <input type='radio' name='course' value='Entree'>Entree</dd>
                     {% endif %} {% if item.course == 'Dessert'%}
-                        <input type='radio' name='course' value='Dessert' checked>Dessert</dd>
+                    <input type='radio' name='course' value='Dessert' checked>Dessert</dd>
                     {% else %}
-                        <input type='radio' name='course' value='Dessert'>Dessert</dd>
+                    <input type='radio' name='course' value='Dessert'>Dessert</dd>
                     {% endif %} {%if item.course =='Beverage'%}
-                        <input type='radio' name='course' value='Beverage' checked>Beverage</dd>
+                    <input type='radio' name='course' value='Beverage' checked>Beverage</dd>
                     {% else %}
-                        <input type='radio' name='course' value='Beverage'>Beverage</dd>
+                    <input type='radio' name='course' value='Beverage'>Beverage</dd>
                     {% endif %}
                 </label>
             </div>
@@ -55,7 +50,9 @@
     </div>
 </body>
 <div class="footer">
-    <h3><a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a></h3>
+    <h3>
+        <a href="{{url_for('restaurantsIndex')}}"> Return to list of restaurants </a>
+    </h3>
 </div>
 
 </html>
