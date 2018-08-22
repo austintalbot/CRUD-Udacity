@@ -34,7 +34,7 @@ a {
 
 a:active,
 a:hover {
-    outline-width: 0;
+    outline-width: 5;
 }
 
 button,
@@ -238,7 +238,7 @@ label {
     color: #0a0a0a;
 }
 
-
+}
 
 h1,
 h2,
@@ -267,7 +267,7 @@ p {
 
 a {
     text-decoration: none;
-    color: #FFFFCC;
+    color: #0080ff;
     font-size: .75em;
 }
 
@@ -286,24 +286,21 @@ a {
     text-align: center;
 }
 
-
-.resatraunts{
+.resatraunts {
     width: 50%;
     float: left;
 }
 
-.nameandprice{
+.nameandprice {
     width: 50%;
     float: left;
 }
-
 
 .price {
     text-align: right;
     float: right;
     padding: 1rem;
 }
-
 
 .flash {
     background: #cee5F5;
@@ -317,4 +314,65 @@ a {
     width: 100%;
     color: white;
     text-align: center;
+}
+
+/*
+ = ======== flexbox ========
+*/
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    flex: 0 0 40%;
+}
+
+/*
+  = ====== visuals =========
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0
+}
+
+.cards {
+    min-height: 100vh;
+}
+
+.card {
+    margin: 12px;
+    background: #408080;
+    border-radius: 7px;
+    padding: 0 0 50px 0
+}
+
+.card>header {
+    background: #ffb7b7;
+    height: 5%;
+    border-radius: 7px 7px 0 0;
+    color: darkslategray
+}
+
+.card>ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card>ul li {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.card button {
+    font-size: 24;
+    margin: 5px;
+   
 }

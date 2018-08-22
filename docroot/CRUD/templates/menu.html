@@ -6,7 +6,7 @@
 
 
 <body>
-    <div class='pane'>
+    <div >
         <div class='header'>
             <h1>{{ restaurant.name }}</h1>
         </div>
@@ -24,22 +24,34 @@
             </ul>
             {% endif %} {% endwith %}
         </div>
-
+        <div class='cards'>
         {% for i in items %}
-        <div class='nameAndPrice'>
-            <h3>{{i.name}}</h3>
-            <span class='price'>
-                <p>{{i.price}} </p>
-            </span>
-            <span class="description">
-                <p>{{i.description}}</p>
-            </span>
-            <div class="editdeletepane">
-                <a href="{{url_for('editMenuItem',restaurant_id = restaurant.id, menu_id=i.id)}}" class="button">Edit</a>
-                <a href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id)}}" class="button">Delete</a>
-            </div>
-        </div>
+            <section class="card">
+                <header>
+                    <h3>{{i.name}}</h3>
+                </header>
+                <ul>
+                    <li>
+                        <span class='price'>
+                            <p>{{i.price}} </p>
+                        </span>
+                    </li>
+                    <li>
+                            <p>{{i.description}}</p>
+                    </li>
+
+                </ul>
+                <button>
+                    <a href="{{url_for('editMenuItem',restaurant_id = restaurant.id, menu_id=i.id)}}" >Edit</a>
+                </button>
+
+                <button>
+                    <a href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id)}}" >Delete</a>
+                </button>
+            </section>
+       
         {% endfor %}
+        </div>
     </div>
     <div class="footer">
         <h3>
